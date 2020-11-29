@@ -6,16 +6,16 @@ import vuetify from "./plugins/vuetify";
 import Default from "./layouts/Default.vue";
 import NoSidebar from "./layouts/NoSidebar.vue";
 
-Vue.component('default-layout', Default);
-Vue.component('no-sidebar-layout', NoSidebar);
+Vue.component("default-layout", Default);
+Vue.component("no-sidebar-layout", NoSidebar);
 
 Vue.config.productionTip = false;
 export const bus = new Vue();
 
 
 new Vue({
-  router,
-  store,
-  vuetify,
-  render: h => h(App)
+	router,
+	store,
+	vuetify,
+	render: h => h(App)
 }).$mount("#app");

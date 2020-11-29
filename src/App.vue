@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <v-main>
-    <component :is="layout">
-      <router-view/>
-    </component>
+      <component :is="layout">
+        <router-view/>
+      </component>
     </v-main>
   </v-app>
 </template>
@@ -12,12 +12,12 @@
 const default_layout = "default";
 
 export default {
-  name: 'App',
+  name: "App",
   computed: {
     layout() {
       return (this.$route.meta.layout || default_layout) + "-layout";
     }
-  },
+  }
 };
 </script>
 
@@ -29,7 +29,8 @@ export default {
 .component-fade-leave-active {
   transition: opacity 0.3s ease;
 }
-.component-fade-enter, .component-fade-leave-to {
+.component-fade-enter,
+.component-fade-leave-to {
   opacity: 0;
 }
 </style>

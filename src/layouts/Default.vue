@@ -2,11 +2,11 @@
   <div>
     <nav-bar/>
     <v-container fluid class="pa-0 ma-0">
-        <v-row>
-          <v-col cols="12" class="pt-0">
-              <slot />
-          </v-col>
-        </v-row>
+      <v-row>
+        <v-col cols="12" class="pt-0">
+          <slot />
+        </v-col>
+      </v-row>
     </v-container>
     <side-bar/>
     <!-- <footer-bar/> -->
@@ -14,25 +14,21 @@
 </template>
 
 <script>
-
 import NavBar from "../components/NavBar";
 // import FooterBar from "../components/FooterBar";
 import SideBar from "../components/SideBar";
 
 export default {
-  name: 'Default',
-  components:{
+  name: "Default",
+  components: {
     NavBar,
     // FooterBar,
     SideBar
   },
   data() {
-    return {
-    };
+    return {};
   },
-  methods: {
-    
-  }
+  methods: {}
 };
 </script>
 
