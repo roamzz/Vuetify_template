@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-container class="grey lighten-4 fluid px-6">
+    <v-container fluid class="grey lighten-4 fluid" :class="$vuetify.breakpoint.smAndDown ? 'px-3' : 'px-6'">
       <div>Home page</div>
       <v-row>
         <v-col cols="12" xs="12" sm="3" class="">
-          <v-card color="#26c6da" dark>
+          <v-card color="#26c6da" dark height="180">
             <v-card-title>
               <v-icon large left>
                 mdi-twitter
@@ -27,7 +27,13 @@
           </v-card>
         </v-col>
         <v-col cols="12" xs="12" sm="3" class="">
-          <v-card color="#385F73" dark>
+          <v-card color="#385F73" dark height="180">
+            <v-card-title>Employees</v-card-title>
+            <v-card-text class="display-2">65</v-card-text>
+          </v-card>
+        </v-col>
+        <v-col cols="12" xs="12" sm="3" class="">
+          <v-card color="#385F73" dark height="180">
             <v-card-title class="headline">
               Unlimited music now
             </v-card-title>
@@ -43,23 +49,7 @@
           </v-card>
         </v-col>
         <v-col cols="12" xs="12" sm="3" class="">
-          <v-card color="#385F73" dark>
-            <v-card-title class="headline">
-              Unlimited music now
-            </v-card-title>
-
-            <v-card-subtitle>Listen to your favorite artists and albums whenever and wherever, online and offline.
-            </v-card-subtitle>
-
-            <v-card-actions>
-              <v-btn text>
-                Listen Now
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-        <v-col cols="12" xs="12" sm="3" class="">
-          <v-card color="#385F73" dark>
+          <v-card color="#385F73" dark height="180">
             <v-card-title class="headline">
               Unlimited music now
             </v-card-title>

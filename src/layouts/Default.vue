@@ -1,9 +1,9 @@
 <template>
   <div>
     <nav-bar/>
-    <v-container fluid class="pa-0 ma-0">
+    <v-container fluid class="pt-0 pb-0">
       <v-row>
-        <v-col cols="12" class="pt-0">
+        <v-col cols="12" class="pa-0 pt-0">
           <slot />
         </v-col>
       </v-row>
