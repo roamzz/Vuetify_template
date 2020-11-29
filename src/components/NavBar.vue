@@ -9,8 +9,8 @@
       <v-icon>mdi-magnify</v-icon>
     </v-btn>
 
-    <v-btn icon>
-      <v-icon>mdi-heart</v-icon>
+    <v-btn icon @click="goToLogin()">
+      Login
     </v-btn>
 
     <v-btn icon>
@@ -37,6 +37,9 @@ export default {
   methods: {
     toggleSidebar() {
       bus.$emit("toggleIt");
+    },
+    goToLogin() {
+      this.$router.push("/login");
     }
   }
 };
