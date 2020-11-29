@@ -1,10 +1,11 @@
 <template>
   <div>
     <v-container fluid class="grey lighten-4 fluid" :class="$vuetify.breakpoint.smAndDown ? 'px-3' : 'px-6'">
-      <div>Home page</div>
+      <h3>Home page</h3>
       <v-row>
         <v-col cols="12" xs="12" sm="3" class="">
-          <v-card color="#26c6da" dark height="180">
+          <v-card color="#
+          " dark height="180">
             <v-card-title>
               <v-icon large left>
                 mdi-twitter
@@ -84,25 +85,39 @@
                   <v-spacer></v-spacer>
                   <v-dialog v-model="dialog" max-width="500px">
                     <template v-slot:activator="{ on, attrs }">
-                      <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">
+                      <v-btn large rounded color="#fe7b5f" dark class="mb-2" v-bind="attrs" v-on="on">
+                        <v-icon left dark>
+                          mdi-plus
+                        </v-icon>
                         Add New
                       </v-btn>
                     </template>
                     <v-card>
                       <v-card-title>
-                        <span class="headline">Form Title</span>
+                        <span class="headline">Form Test Title</span>
                       </v-card-title>
                       <v-card-text>
                         <v-container>
                           <v-row>
                             <v-col cols="12" sm="6">
-                              <v-text-field outlined label="Legal first name*" required></v-text-field>
+                              <div>Label 1</div>
+                              <v-text-field outlined dense required></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="6">
-                              <v-text-field outlined label="Legal first name*" required></v-text-field>
+                              <div>Label 2</div>
+                              <v-text-field outlined dense required></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                              <div>Label 1</div>
+                              <v-text-field outlined dense required></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                              <div>Label 2</div>
+                              <v-text-field outlined dense required></v-text-field>
                             </v-col>
                             <v-col cols="12">
-                              <v-text-field outlined label="Password*" type="password" required></v-text-field>
+                              <div>Label 3</div>
+                              <v-text-field outlined dense type="password" required></v-text-field>
                             </v-col>
                           </v-row>
                         </v-container>
@@ -110,10 +125,10 @@
                       <v-card-actions>
 
                         <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" dark @click="dialog = false">
+                        <v-btn color="#fe7b5f" dark @click="dialog = false">
                           Close
                         </v-btn>
-                        <v-btn color="blue darken-1" dark @click="dialog = false">
+                        <v-btn color="#fe7b5f" dark @click="dialog = false">
                           Save
                         </v-btn>
                       </v-card-actions>

@@ -42,7 +42,8 @@ export default {
       drawer: true,
       items: [
         { title: "Home", icon: "mdi-view-dashboard", view: "/" },
-        { title: "About", icon: "mdi-help-box", view: "/about" }
+        { title: "About", icon: "mdi-help-box", view: "/about" },
+        { title: "Clients", icon: "mdi-help-box", view: "/clients" }
       ]
     };
   },
