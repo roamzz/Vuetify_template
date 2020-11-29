@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar flat dark color="#fe7b5f">
+  <v-app-bar flat dark color="#fe7b5f" fixed app>
     <v-app-bar-nav-icon @click.stop="toggleSidebar()"></v-app-bar-nav-icon>
     <v-toolbar-title>Title</v-toolbar-title>
 
@@ -16,7 +16,7 @@
     <v-btn icon>
       <v-icon>mdi-dots-vertical</v-icon>
     </v-btn>
-  </v-toolbar>
+  </v-app-bar>
 
 </template>
 
