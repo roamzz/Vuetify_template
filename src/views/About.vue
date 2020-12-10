@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-container class="grey lighten-4 fluid px-6 test">
+        <v-container fluid class="grey lighten-4 fluid px-6">
             <h3>About</h3>
             <v-row>
                 <v-col>about Page</v-col>
@@ -10,8 +10,5 @@
     </div>
 </template>
 <style scoped>
-.test {
-  height: 100vh;
-}
 </style>
 

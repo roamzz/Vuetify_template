@@ -1,13 +1,13 @@
 <template>
-  <v-navigation-drawer left app v-model="drawer">
+  <v-navigation-drawer dark left app v-model="drawer" color="#34444c">
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="title">
-          my App
+          Menu
         </v-list-item-title>
-        <v-list-item-subtitle>
+        <!-- <v-list-item-subtitle>
           sub
-        </v-list-item-subtitle>
+        </v-list-item-subtitle> -->
       </v-list-item-content>
     </v-list-item>
 
@@ -42,6 +42,7 @@ export default {
       drawer: true,
       items: [
         { title: "Home", icon: "mdi-view-dashboard", view: "/" },
+        { title: "Contracts", icon: "mdi-view-dashboard", view: "/contracts" },
         { title: "About", icon: "mdi-help-box", view: "/about" },
         { title: "Clients", icon: "mdi-help-box", view: "/clients" }
       ]

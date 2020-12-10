@@ -4,6 +4,7 @@ import Login from "../views/Login.vue";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Clients from "../views/Clients.vue";
+import Contracts from "../views/Contracts.vue";
 Vue.use(VueRouter);
 
 const routes = [{
@@ -30,6 +31,14 @@ const routes = [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: About,
+    meta: {
+      layout: "default"
+    }
+  },
+  {
+    path: "/contracts",
+    name: "Contracts",
+    component: Contracts,
     meta: {
       layout: "default"
     }
