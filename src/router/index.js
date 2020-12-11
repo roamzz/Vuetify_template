@@ -5,6 +5,7 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Clients from "../views/Clients.vue";
 import Contracts from "../views/Contracts.vue";
+import Tickets from "../views/Tickets.vue";
 Vue.use(VueRouter);
 
 const routes = [{
@@ -39,6 +40,14 @@ const routes = [{
     path: "/contracts",
     name: "Contracts",
     component: Contracts,
+    meta: {
+      layout: "default"
+    }
+  },
+  {
+    path: "/tickets",
+    name: "Tickets",
+    component: Tickets,
     meta: {
       layout: "default"
     }

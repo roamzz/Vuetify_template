@@ -1,51 +1,78 @@
 <template>
   <div>
     <v-container fluid class="grey lighten-5 mb-6 fluid container-height" :class="$vuetify.breakpoint.smAndDown ? 'px-3' : 'px-6' ">
-      <h3 class="mt-4 mb-4">Συμβόλαια</h3>
+      <h3 class="mt-4">Tickets</h3>
 
-      <v-row justify="center" align="center">
-        <v-col cols="3" class="">
-          <v-select dense filled item-text="name" item-value="value" v-model="insurance" :items="insurances" label="Ασφ.Εταιρία" @change="filterContract()">
-          </v-select>
-        </v-col>
-        <v-col cols="3">
-          <v-select dense filled item-text="name" item-value="value" v-model="insurance" :items="insurances" label="Κλάδος Ασφάλισης" @change="filterContract()">
-          </v-select>
-        </v-col>
-        <v-col cols="3">
-          <v-select dense filled item-text="name" item-value="value" v-model="insurance" :items="insurances" label="Τύπος Συμβολαίου" @change="filterContract()">
-          </v-select>
-        </v-col>
-        <v-col cols="3">
-          <v-select dense filled item-text="name" item-value="value" v-model="insurance" :items="insurances" label="Broker">
-          </v-select>
-        </v-col>
-        <v-col cols="3">
-          <v-text-field filled v-model="search" append-icon="mdi-magnify" label="Κωδ. Συμβολαίου" single-line></v-text-field>
-        </v-col>
-        <v-col cols="3">
-          <v-text-field filled v-model="search" append-icon="mdi-magnify" label="ΑΦΜ" single-line></v-text-field>
-        </v-col>
-        <v-col cols="3">
-          <v-text-field filled v-model="search" append-icon="mdi-magnify" label="Επωνυμία πελάτη" single-line></v-text-field>
-        </v-col>
-        <v-col cols="3">
-          <v-select dense filled item-text="name" item-value="value" v-model="status" :items="statuses" label="Κατάσταση">
-          </v-select>
-        </v-col>
-
-      </v-row>
       <v-row>
         <v-col cols="12">
           <v-card>
             <v-card-title>
-              <!-- <v-text-field outlined dense v-model="search" append-icon="mdi-magnify" label="Αναζήτηση" single-line></v-text-field> -->
+
+              <v-spacer></v-spacer>
+              <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line hide-details></v-text-field>
             </v-card-title>
             <v-data-table :items-per-page="5" :headers="headers" :items="contracts" :search="search" class="mb-10">
               <template v-slot:item.status="{ item }">
                 <v-chip :color="getColor(item.status)" dark>
                   {{ item.status }}
                 </v-chip>
+              </template>
+              <template v-slot:top>
+                <v-toolbar flat>
+                  <v-toolbar-title></v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-dialog v-model="dialog" max-width="500px">
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn large rounded color="#fe7b5f" dark class="mb-2" v-bind="attrs" v-on="on">
+                        <v-icon left dark>
+                          mdi-plus
+                        </v-icon>
+                        Add New
+                      </v-btn>
+                    </template>
+                    <v-card>
+                      <v-card-title>
+                        <span class="headline">Form Test Title</span>
+                      </v-card-title>
+                      <v-card-text>
+                        <v-container>
+                          <v-row>
+                            <v-col cols="12" sm="6">
+                              <div>Label 1</div>
+                              <v-text-field outlined dense required></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                              <div>Label 2</div>
+                              <v-text-field outlined dense required></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                              <div>Label 1</div>
+                              <v-text-field outlined dense required></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="6">
+                              <div>Label 2</div>
+                              <v-text-field outlined dense required></v-text-field>
+                            </v-col>
+                            <v-col cols="12">
+                              <div>Label 3</div>
+                              <v-text-field outlined dense type="password" required></v-text-field>
+                            </v-col>
+                          </v-row>
+                        </v-container>
+                      </v-card-text>
+                      <v-card-actions>
+
+                        <v-spacer></v-spacer>
+                        <v-btn color="#fe7b5f" dark @click="dialog = false">
+                          Close
+                        </v-btn>
+                        <v-btn color="#fe7b5f" dark @click="dialog = false">
+                          Save
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+                </v-toolbar>
               </template>
 
               <template v-slot:item.actions="{ item }">
@@ -91,21 +118,6 @@ export default {
   name: "Contracts",
   data() {
     return {
-      filters: {
-        insurance: [],
-        typeinsurance: []
-      },
-      insurance: "",
-      insurances: [
-        { name: "AIG", value: "AIG" },
-        { name: "Interamerican", value: "Interamerican" }
-      ],
-      statuses: [
-        { name: "Completed", value: "completed" },
-        { name: "Incompleted", value: "incompleted" }
-      ],
-      status: "",
-
       dialog: false,
       search: "",
       headers: [
@@ -153,43 +165,7 @@ export default {
         },
         { text: "Actions", value: "actions", sortable: false }
       ],
-      contractsOriginal: [],
-      contracts: []
-    };
-  },
-  computed: {},
-  mounted() {
-    this.getContracts();
-  },
-  methods: {
-    filterContract() {
-      let filtered = this.contractsOriginal.filter(
-        val => val.insurance == this.insurance
-      );
-      console.log(filtered);
-      setTimeout(() => {
-        this.contracts = filtered;
-      }, 1000);
-    },
-
-    getColor(status) {
-      if (status == "completed") return "green";
-      else if (status == "inactive") return "orange";
-      else return "red";
-    },
-    showContract(item) {
-      console.log("show");
-      console.log(item);
-    },
-    downloadContract(item) {
-      console.log("download");
-      console.log(item);
-      <a href="link-to.pdf" target="_blank">
-        Download
-      </a>;
-    },
-    getContracts() {
-      this.contractsOriginal = [
+      contracts: [
         {
           name: "AIG-0001",
           afm: 10562732,
@@ -320,11 +296,25 @@ export default {
           status: "completed",
           url: "http://localhost:8080/mypdf.pdf"
         }
-      ];
-
-      setTimeout(() => {
-        this.contracts = this.contractsOriginal;
-      }, 1000);
+      ]
+    };
+  },
+  methods: {
+    getColor(status) {
+      if (status == "completed") return "green";
+      else if (status == "inactive") return "orange";
+      else return "red";
+    },
+    showContract(item) {
+      console.log("show");
+      console.log(item);
+    },
+    downloadContract(item) {
+      console.log("download");
+      console.log(item);
+      <a href="link-to.pdf" target="_blank">
+        Download
+      </a>;
     }
   }
 };
